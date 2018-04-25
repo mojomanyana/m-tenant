@@ -4,7 +4,7 @@
   "description": "Tenant serverless boilerplate",
   "scripts": {
     "precommit-msg": "echo 'Pre-commit checks...' && exit 0",
-    "lint-api": "eslint ./serverless-tenant-api",
+    "lint-api": "eslint",
     "test-api": "nyc --require babel-core/register mocha ./*/tests/*.test.js"
   },
   "keywords": [
