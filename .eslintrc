@@ -1,0 +1,17 @@
+{
+  "extends": [
+    "airbnb-base",
+    "plugin:security/recommended"
+  ],
+  "rules": {
+    "no-plusplus": 0
+  },
+  "globals": {
+    "it": true,
+    "describe": true,
+    "before": true
+  },
+  "plugins": [
+    "security"
+  ]
+}
