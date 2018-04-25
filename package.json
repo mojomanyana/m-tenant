@@ -4,7 +4,7 @@
   "description": "Tenant serverless boilerplate",
   "scripts": {
     "precommit-msg": "echo 'Pre-commit checks...' && exit 0",
-    "lint-api": "eslint *.js",
+    "lint-api": "eslint ./*/*/*.js -c ./.eslintrc --quiet",
     "test-api": "nyc --require babel-core/register mocha ./*/tests/*.test.js"
   },
   "keywords": [
@@ -39,6 +39,5 @@
     "babel-preset-node8": "^1.2.0",
     "mocha": "^5.1.1",
     "nyc": "^11.7.1"
-  },
-  "eslintIgnore": ["/.sonarlint", "/node_modules"]
+  }
 }
