@@ -1,0 +1,47 @@
+{
+  "name": "servereless-tenant-api",
+  "engines": {
+    "node": "8.10.0",
+    "npm": "5.6.0"
+  },
+  "version": "1.0.0",
+  "description": "Tenant API for M-Tenant project",
+  "main": "dist/index.js",
+  "scripts": {
+    "precommit-msg": "echo 'Pre-commit checks...' && exit 0",
+    "build": "babel ./src -d ./dist --presets node8",
+    "nsp": "nsp check --reporter summary",
+    "linter": "eslint ./",
+    "test": "nyc --require babel-core/register mocha \"tests/*.test.js\""
+  },
+  "pre-commit": [
+    "precommit-msg",
+    "nsp",
+    "linter",
+    "test"
+  ],
+  "keywords": [
+    "tenant",
+    "serverless",
+    "sam",
+    "node",
+    "js"
+  ],
+  "author": "mojomanyana",
+  "license": "ISC",
+  "devDependencies": {
+    "aws-sdk": "^2.227.1",
+    "babel-cli": "^6.26.0",
+    "babel-preset-node8": "^1.2.0",
+    "babel-register": "^6.26.0",
+    "chai": "^4.1.2",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-security": "^1.4.0",
+    "mocha": "^5.1.1",
+    "nsp": "^3.2.1",
+    "nyc": "^11.7.1",
+    "pre-commit": "^1.2.2"
+  }
+}
