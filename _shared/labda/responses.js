@@ -17,4 +17,4 @@ module.exports = {
   failure: function success(body) {
     return buildResponse(500, body);
   },
-}
+};

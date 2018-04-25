@@ -7,26 +7,6 @@
   "version": "1.0.0",
   "description": "Tenant API for M-Tenant project",
   "main": "dist/index.js",
-  "scripts": {
-    "precommit-msg": "echo 'Pre-commit checks...' && exit 0",
-    "build": "babel ./src -d ./dist --presets node8",
-    "nsp": "nsp check --reporter summary",
-    "linter": "eslint ./",
-    "test": "nyc --require babel-core/register mocha \"tests/*.test.js\""
-  },
-  "pre-commit": [
-    "precommit-msg",
-    "nsp",
-    "linter",
-    "test"
-  ],
-  "keywords": [
-    "tenant",
-    "serverless",
-    "sam",
-    "node",
-    "js"
-  ],
   "author": "mojomanyana",
   "license": "ISC",
   "devDependencies": {
@@ -41,7 +21,6 @@
     "eslint-plugin-security": "^1.4.0",
     "mocha": "^5.1.1",
     "nsp": "^3.2.1",
-    "nyc": "^11.7.1",
-    "pre-commit": "^1.2.2"
+    "nyc": "^11.7.1"
   }
 }
