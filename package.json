@@ -4,7 +4,8 @@
   "description": "Tenant serverless boilerplate",
   "scripts": {
     "precommit-msg": "echo 'Pre-commit checks...' && exit 0",
-    "lint-api": "eslint ./serverless-tenant-api/"
+    "lint-api": "eslint ./serverless-tenant-api/",
+    "test-api": "nyc --require babel-core/register mocha ./*/tests/*.test.js"
   },
   "keywords": [
     "tenant",
@@ -16,7 +17,7 @@
   "pre-commit": [
     "precommit-msg",
     "lint-api",
-    "test"
+    "test-api"
   ],
   "repository": {
     "type": "git",
@@ -30,11 +31,14 @@
   "homepage": "https://github.com/mojomanyana/m-tenant#readme",
   "devDependencies": {
     "pre-commit": "^1.2.2",
+    "babel-register": "^6.26.0",
     "eslint": "^4.19.1",
     "eslint-plugin-security": "^1.4.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.11.0",
-    "babel-preset-node8": "^1.2.0"
+    "babel-preset-node8": "^1.2.0",
+    "mocha": "^5.1.1",
+    "nyc": "^11.7.1"
   },
   "eslintIgnore": ["/.sonarlint", "/node_modules"]
 }
