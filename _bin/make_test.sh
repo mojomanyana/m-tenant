@@ -3,7 +3,6 @@
 function testing {
   (
     cd $1;\
-    echo "*** running tests and coverage ***";\
     npm run test;\
     cd ..;\
   )

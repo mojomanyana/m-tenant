@@ -3,7 +3,6 @@
 function linting {
   (
     cd $1;\
-    echo "*** running lint ***";\
     npm run lint;\
     cd ..;\
   )

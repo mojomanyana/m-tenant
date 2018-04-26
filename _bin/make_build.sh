@@ -3,7 +3,6 @@
 function testing {
   (
     cd $1;\
-    echo "*** running babel build and preparing \"dist\" folder ***";\
     npm run build;\
     cd ..;\
   )
