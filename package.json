@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Tenant serverless boilerplate",
   "scripts": {
-    "precommit-msg": "echo '\\x1b[32m*** Pre-commit checks... ***\\x1b[39m' && exit 0",
+    "precommit-msg": "echo '\\x1b[34m*** Pre-commit checks... ***\\x1b[39m' && exit 0",
     "clear-api": "bash _bin/make_clear.sh",
     "install-api": "bash _bin/make_install.sh",
     "build-api": "bash _bin/make_build.sh",
