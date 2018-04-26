@@ -3,8 +3,8 @@
 function linting {
   (
     cd $1;\
-    var='npm run lint'\
-    echo $var\
+    var="npm run lint"\
+    echo "$var";\
     cd ..;\
   )
 }
