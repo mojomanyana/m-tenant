@@ -10,7 +10,7 @@
   "author": "mojomanyana",
   "scripts": {
     "build": "babel ./src -d ./dist --presets node8",
-    "lint": "eslint ./ -c ../.eslintrc",
+    "lint": "eslint ./ -c ../.eslintrc && exit 0",
     "test": "nyc --require babel-core/register mocha ./tests/*.test.js"
   },
   "license": "MIT",
