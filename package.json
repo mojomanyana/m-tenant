@@ -24,8 +24,7 @@
     "build-api",
     "lint-api",
     "nsp-api",
-    "test-api",
-    "clear-api"
+    "test-api"
   ],
   "repository": {
     "type": "git",
