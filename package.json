@@ -3,9 +3,13 @@
   "version": "1.0.0",
   "description": "Tenant serverless boilerplate",
   "scripts": {
-    "precommit-msg": "echo 'Pre-commit checks...' && exit 0",
-    "lint-api": "echo '=> linting' && eslint ./*/*/*.js -c ./.eslintrc --quiet",
-    "test-api": "echo '=> testung' && nyc --require babel-core/register mocha ./*/tests/*.test.js"
+    "precommit-msg": "echo '***Pre-commit checks...***' && exit 0",
+    "clear-api": "bash _bin/make_clear.sh",
+    "install-api": "bash _bin/make_install.sh",
+    "build-api": "bash _bin/make_build.sh",
+    "lint-api": "bash _bin/make_lint.sh",
+    "nsp-api": "bash _bin/make_nodesecurity_check.sh",
+    "test-api": "bash _bin/make_test.sh"
   },
   "keywords": [
     "tenant",
@@ -16,7 +20,10 @@
   ],
   "pre-commit": [
     "precommit-msg",
+    "clear-api",
+    "build-api",
     "lint-api",
+    "nsp-api",
     "test-api"
   ],
   "repository": {
@@ -30,15 +37,6 @@
   },
   "homepage": "https://github.com/mojomanyana/m-tenant#readme",
   "devDependencies": {
-    "pre-commit": "^1.2.2",
-    "babel-register": "^6.26.0",
-    "eslint": "^4.19.1",
-    "eslint-plugin-security": "^1.4.0",
-    "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-import": "^2.11.0",
-    "babel-preset-node8": "^1.2.0",
-    "chai": "^4.1.2",
-    "mocha": "^5.1.1",
-    "nyc": "^11.7.1"
+    "pre-commit": "^1.2.2"
   }
 }

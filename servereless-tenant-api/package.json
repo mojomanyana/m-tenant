@@ -9,14 +9,15 @@
   "main": "dist/index.js",
   "author": "mojomanyana",
   "scripts": {
-    "build": "babel ./src -d ./dist --presets node8 --config-file ../.babelrc",
-    "linter": "eslint ./ -c ../.eslintrc",
+    "build": "babel ./src -d ./dist --presets node8",
+    "lint": "eslint ./ -c ../.eslintrc",
     "test": "nyc --require babel-core/register mocha ./tests/*.test.js"
   },
   "license": "MIT",
   "devDependencies": {
     "aws-sdk": "^2.227.1",
     "babel-cli": "^6.26.0",
+    "babel-plugin-inline-import": "^2.0.6",
     "babel-preset-node8": "^1.2.0",
     "babel-register": "^6.26.0",
     "chai": "^4.1.2",
@@ -27,5 +28,20 @@
     "mocha": "^5.1.1",
     "nyc": "^11.7.1"
   },
-  "eslintIgnore": ["/dist", "/.nyc_output"]
+  "babel": {
+    "presets": ["node8"],
+    "plugins": [
+      ["babel-plugin-inline-import", {
+        "extensions": [
+          ".json",
+          ".js"
+        ]
+      }]
+    ]
+  },
+  "eslintIgnore": [
+    "/dist",
+    "/.nyc_output",
+    "/node_modules"
+  ]
 }
