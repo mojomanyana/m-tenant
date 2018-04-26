@@ -3,7 +3,7 @@
 function linting {
   (
     cd $1;\
-    var=npm run lint;\
+    var='npm run lint;'\
     cd ..;\
   )
 }
