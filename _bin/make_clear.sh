@@ -13,7 +13,7 @@ function clearing {
 
 for d in */ ; do
     if [ $d != "_bin/" ] && [ $d != "node_modules/" ] && [ $d != "_shared/" ]; then
-        echo "\e[34m*** $d removing lint, test, artifacts ***";
+        echo -e "\e[34m*** $d removing lint, test, artifacts ***";
         clearing $d;
     fi
 done
