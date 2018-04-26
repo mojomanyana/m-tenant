@@ -25,7 +25,8 @@
     "build-api",
     "lint-api",
     "nsp-api",
-    "test-api"
+    "test-api",
+    "postcommit-msg"
   ],
   "repository": {
     "type": "git",
