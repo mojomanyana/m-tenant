@@ -13,7 +13,5 @@ for d in */ ; do
     if [ $d != "_bin/" ] && [ $d != "node_modules/" ] && [ $d != "_shared/" ]; then
         echo "*** $d linting ***";
         linting $d;
-    else
-        echo "*** skipping $d ***"
     fi
 done

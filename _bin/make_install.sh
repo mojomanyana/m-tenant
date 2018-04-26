@@ -12,7 +12,5 @@ for d in */ ; do
     if [ $d != "_bin/" ] && [ $d != "node_modules/" ] && [ $d != "_shared/" ]; then
         echo "*** $d installing node modules ***";
         install $d;
-    else
-        echo "*** skipping $d ***"
     fi
 done
