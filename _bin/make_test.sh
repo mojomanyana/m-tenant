@@ -10,7 +10,7 @@ function testing {
 
 for d in */ ; do
     if [ $d != "_bin/" ] && [ $d != "node_modules/" ] && [ $d != "_shared/" ]; then
-        echo "*** $d testing ***";
+        echo "\x1b[32m*** $d testing ***\x1b[39m";
         testing $d;
     fi
 done

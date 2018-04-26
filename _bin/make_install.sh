@@ -10,7 +10,7 @@ function install {
 
 for d in */ ; do
     if [ $d != "_bin/" ] && [ $d != "node_modules/" ] && [ $d != "_shared/" ]; then
-        echo "*** $d installing node modules ***";
+        echo "\x1b[32m*** $d installing node modules ***\x1b[39m";
         install $d;
     fi
 done
