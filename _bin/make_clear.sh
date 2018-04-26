@@ -12,10 +12,8 @@ function clearing {
 }
 
 for d in */ ; do
-    if [ $d != "_bin/" ] && [ $d != "node_modules/" ] && [ $d != "_shared/" ];then
+    if [ $d != "_bin/" ] && [ $d != "node_modules/" ] && [ $d != "_shared/" ]; then
         echo "*** $d removing lint, test, artifacts ***";
         clearing $d;
-    else
-        echo "*** skipping $d ***"
     fi
 done
