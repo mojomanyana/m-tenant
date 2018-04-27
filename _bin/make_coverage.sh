@@ -9,12 +9,12 @@ function coverage {
     ./cc-test-reporter format-coverage -t lcov -o tmp/$1api.codeclimate.json ./$1coverage/lcov.info;\
   )
 }
-#curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-darwin-amd64 > ./cc-test-reporter;\
+curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-darwin-amd64 > ./cc-test-reporter;\
 chmod +x ./cc-test-reporter;\
 #./cc-test-reporter before-build;\
 
 for d in */ ; do
-    if [ $d != "_bin/" ] && [ $d != "node_modules/" ] && [ $d != "_shared/" ]; then
+    if [ $d != "_bin/" ] && [ $d != "node_modules/" ] && [ $d != "_shared/" && [ $d != "tmp/" ]]; then
         echo -e "\x1b[32m*** $d lcov coverage report ***\x1b[39m";
         coverage $d;
     fi

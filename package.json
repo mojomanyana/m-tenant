@@ -22,12 +22,11 @@
   ],
   "pre-commit": [
     "precommit-msg",
-    "clear-api",
     "build-api",
     "test-api",
-    "coverage-api",
     "lint-api",
     "nsp-api",
+    "clear-api",
     "postcommit-msg"
   ],
   "repository": {
