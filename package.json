@@ -41,6 +41,7 @@
   },
   "homepage": "https://github.com/mojomanyana/m-tenant#readme",
   "devDependencies": {
+    "codacy-coverage": "^3.0.0",
     "pre-commit": "^1.2.2"
   }
 }
