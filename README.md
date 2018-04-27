@@ -1,1 +1,2 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/5203af23512a4be9a20c205237d3ead3)](https://app.codacy.com/app/mojomanyana/m-tenant?utm_source=github.com&utm_medium=referral&utm_content=mojomanyana/m-tenant&utm_campaign=badger)
 # m-tenant [![Maintainability](https://api.codeclimate.com/v1/badges/56c145422a48d435648d/maintainability)](https://codeclimate.com/github/mojomanyana/m-tenant/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/56c145422a48d435648d/test_coverage)](https://codeclimate.com/github/mojomanyana/m-tenant/test_coverage)
