@@ -10,7 +10,8 @@
     "build-api": "bash _bin/make_build.sh",
     "lint-api": "bash _bin/make_lint.sh",
     "nsp-api": "bash _bin/make_nodesecurity_check.sh",
-    "test-api": "bash _bin/make_test.sh"
+    "test-api": "bash _bin/make_test.sh",
+    "coverage-api": "bash _bin/make_coverage.sh"
   },
   "keywords": [
     "tenant",
@@ -23,9 +24,10 @@
     "precommit-msg",
     "clear-api",
     "build-api",
+    "test-api",
+    "coverage-api",
     "lint-api",
     "nsp-api",
-    "test-api",
     "postcommit-msg"
   ],
   "repository": {
