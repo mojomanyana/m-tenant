@@ -10,7 +10,8 @@
   "author": "mojomanyana",
   "scripts": {
     "build": "babel ./src -d ./dist --presets node8",
-    "lint": "eslint ./ -c ../.eslintrc -f checkstyle ./ > eslint.xml",
+    "lint": "eslint ./ -c ../.eslintrc",
+    "lint-to-file": "eslint ./ -c ../.eslintrc -f checkstyle ./ > eslint.xml",
     "test": "nyc --require babel-core/register mocha ./tests/*.test.js",
     "report": "nyc report --reporter=lcov"
   },
@@ -22,6 +23,7 @@
     "babel-preset-node8": "^1.2.0",
     "babel-register": "^6.26.0",
     "chai": "^4.1.2",
+    "codeclimate-test-reporter": "^0.5.0",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.11.0",
@@ -30,14 +32,19 @@
     "nyc": "^11.7.1"
   },
   "babel": {
-    "presets": ["node8"],
+    "presets": [
+      "node8"
+    ],
     "plugins": [
-      ["babel-plugin-inline-import", {
-        "extensions": [
-          ".json",
-          ".js"
-        ]
-      }]
+      [
+        "babel-plugin-inline-import",
+        {
+          "extensions": [
+            ".json",
+            ".js"
+          ]
+        }
+      ]
     ]
   },
   "eslintIgnore": [
