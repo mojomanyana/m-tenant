@@ -3,14 +3,15 @@
 function clearing {
   (
     cd $1;\
-    # rm -r eslint.xml;\
-    # rm -r artifacts/;\
     rm -r .nyc_output/;\
     rm -r dist/;\
     rm -r coverage/;\
     cd ..;\
   )
 }
+
+rm -r tmp/;\
+rm cc-test-reporter;
 
 for d in */ ; do
     if [ $d != "_bin/" ] && [ $d != "node_modules/" ] && [ $d != "_shared/" ] && [ $d != "tmp/" ]; then
