@@ -13,17 +13,19 @@
     "lint": "eslint ./ -c ../.eslintrc",
     "lint-to-file": "eslint ./ -c ../.eslintrc -f checkstyle ./ > eslint.xml",
     "test": "nyc --require babel-core/register mocha ./tests/*.test.js",
-    "test-to-report": "nyc report --reporter=lcov && cat ./coverage/lcov.info | codacy-coverage --token 5203af23512a4be9a20c205237d3ead3 -p ."
+    "test-to-report": "cross-env NODE_ENV=test nyc mocha ./tests/*.test.js && cat ./coverage/lcov.info | codacy-coverage --token 5203af23512a4be9a20c205237d3ead3"
   },
   "license": "MIT",
   "devDependencies": {
     "aws-sdk": "^2.227.1",
     "babel-cli": "^6.26.0",
     "babel-plugin-inline-import": "^2.0.6",
+    "babel-plugin-istanbul": "^4.1.6",
     "babel-preset-node8": "^1.2.0",
     "babel-register": "^6.26.0",
     "chai": "^4.1.2",
     "codacy-coverage": "^3.0.0",
+    "cross-env": "^5.1.4",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.11.0",
@@ -35,6 +37,13 @@
     "presets": [
       "node8"
     ],
+    "env": {
+      "test": {
+        "plugins": [
+          "istanbul"
+        ]
+      }
+    },
     "plugins": [
       [
         "babel-plugin-inline-import",
@@ -46,6 +55,17 @@
         }
       ]
     ]
+  },
+  "nyc": {
+    "require": [
+      "babel-register"
+    ],
+    "reporter": [
+      "lcov",
+      "text"
+    ],
+    "sourceMap": false,
+    "instrument": false
   },
   "eslintIgnore": [
     "/dist",
