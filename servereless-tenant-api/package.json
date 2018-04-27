@@ -13,7 +13,7 @@
     "lint": "eslint ./ -c ../.eslintrc",
     "lint-to-file": "eslint ./ -c ../.eslintrc -f checkstyle ./ > eslint.xml",
     "test": "nyc --require babel-core/register mocha ./tests/*.test.js",
-    "test-to-report": "NODE_ENV=test nyc report --reporter=lcov --reporter=text mocha ./tests/*.test.js && cat ./coverage/lcov.info | codacy-coverage -p . --token 5203af23512a4be9a20c205237d3ead3"
+    "test-to-report": "NODE_ENV=test nyc report --reporter=lcov && cat ./coverage/lcov.info | codacy-coverage --token 5203af23512a4be9a20c205237d3ead3 -p ."
   },
   "license": "MIT",
   "devDependencies": {
