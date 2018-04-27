@@ -13,7 +13,7 @@
     "lint": "eslint ./ -c ../.eslintrc",
     "lint-to-file": "eslint ./ -c ../.eslintrc -f checkstyle ./ > eslint.xml",
     "test": "nyc --require babel-core/register mocha ./tests/*.test.js",
-    "report": "nyc report --reporter=lcov"
+    "test-to-report": "nyc report --reporter=lcov && cat coverage/lcov.info | codacy-coverage"
   },
   "license": "MIT",
   "devDependencies": {
@@ -23,7 +23,7 @@
     "babel-preset-node8": "^1.2.0",
     "babel-register": "^6.26.0",
     "chai": "^4.1.2",
-    "codeclimate-test-reporter": "^0.5.0",
+    "codacy-coverage": "^3.0.0",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.11.0",

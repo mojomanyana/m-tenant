@@ -7,6 +7,7 @@ function clearing {
     # rm -r artifacts/;\
     rm -r .nyc_output/;\
     rm -r dist/;\
+    rm -r coverage/;\
     cd ..;\
   )
 }
