@@ -7,7 +7,7 @@
   "version": "1.0.0",
   "description": "Tenant API for M-Tenant project",
   "main": "dist/index.js",
-  "author": "mojomanyana",
+  "author": "mojomanyana ",
   "scripts": {
     "build": "babel ./src -d ./dist --presets node8",
     "lint": "eslint ./ -c ../.eslintrc",
