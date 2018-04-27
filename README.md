@@ -2,10 +2,22 @@
 
 This is serverless approach for multi tenant SAAS boilreplate, you can build upon this your next SAAS startup.
 
-## Getting started
+## Basic dev guides
+- For this project we use AirBnb code style `https://github.com/airbnb/javascript`
+- We user AWS SAM framework for building our API `https://github.com/awslabs/serverless-application-model`
 
-Clone master repo on your hard drive. Navigate to the project root and install dependecies using bash script "make_install.sh"
+## Basic local setup
+- Setup node 8.10.0 and npm 5.6.0 on your local environment
+- Clone repository
+- run `bash _bin/make_install.sh`
+- This will update all your node_modules
 
-```
-bash _bin/make_install.sh
-```
+## Basic linting
+- Finish `Basic local setup`
+- run `bash _bin/make_lint.sh`
+- This will run lint on all folders
+
+## Basic testing
+- Finish `Basic local setup`
+- run `bash _bin/make_test.sh`
+- This will run tests on all folders and create coverage report
