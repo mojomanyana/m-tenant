@@ -3,7 +3,7 @@
 function coverage {
   (
     cd $1;\
-    npm run coverage;\
+    npm run test-to-report;\
     cd ..;\
   )
 }
