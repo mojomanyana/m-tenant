@@ -1,1 +1,1 @@
-# m-tenant
+# m-tenant [![Maintainability](https://api.codeclimate.com/v1/badges/56c145422a48d435648d/maintainability)](https://codeclimate.com/github/mojomanyana/m-tenant/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/56c145422a48d435648d/test_coverage)](https://codeclimate.com/github/mojomanyana/m-tenant/test_coverage)
