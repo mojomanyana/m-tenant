@@ -2,7 +2,7 @@
 
 function secCheck {
   (
-    cd $1;\
+    cd $1 || return;\
     nsp check;\
     cd ..;\
   )

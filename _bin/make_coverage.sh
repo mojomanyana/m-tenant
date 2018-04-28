@@ -2,7 +2,7 @@
 
 function coverage {
   (
-    cd $1;\
+    cd $1 || return;\
     npm run report;\
     cd ..;\
     ./cc-test-reporter format-coverage -t lcov -o tmp/$1api.codeclimate.json ./$1coverage/lcov.info;\

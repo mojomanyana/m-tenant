@@ -2,7 +2,7 @@
 
 function install {
   (
-    cd $1;\
+    cd $1 || return;\
     npm install "${args[0]}" --silent;\
     cd ..;\
   )
