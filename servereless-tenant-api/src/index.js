@@ -1,7 +1,6 @@
 import dotEnv from 'dotenv';
 import AWS from 'aws-sdk';
 import { success, failure } from '../../_shared/labda/responses';
-import { call } from '../../_shared/labda/dynamodb-helper';
 
 dotEnv.config();
 const dynamoDb = new AWS.DynamoDB.DocumentClient();
