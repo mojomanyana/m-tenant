@@ -1,8 +1,10 @@
 import dotEnv from 'dotenv';
+import AWS from 'aws-sdk';
 import { success, failure } from '../../_shared/labda/responses';
 import { call } from '../../_shared/labda/dynamodb-helper';
 
 dotEnv.config();
+const dynamoDb = new AWS.DynamoDB.DocumentClient();
 
 exports.get = (event, context, callback) => {
   try {
@@ -19,7 +21,8 @@ exports.get = (event, context, callback) => {
       ScanIndexForward: false,
       ExclusiveStartKey: paramsBody.lastEvaluatedKey,
     };
-    call(getTenantsListParams)
+    // Query data and handle promise response
+    dynamoDb.query(getTenantsListParams).promise()
       .then(data =>
         callback(
           null,

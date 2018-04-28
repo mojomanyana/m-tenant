@@ -17,7 +17,6 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "aws-sdk": "^2.227.1",
     "babel-cli": "^6.26.0",
     "babel-plugin-inline-import": "^2.0.6",
     "babel-preset-node8": "^1.2.0",
@@ -52,6 +51,7 @@
     "/node_modules"
   ],
   "dependencies": {
+    "aws-sdk": "^2.227.1",
     "dotenv": "^5.0.1"
   }
 }
