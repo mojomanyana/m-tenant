@@ -10,7 +10,7 @@
   "author": "mojomanyana ",
   "scripts": {
     "build": "babel ./src -d ./dist --presets node8",
-    "lint": "eslint ./ -c ../.eslintrc",
+    "lint": "eslint ./ -c .eslintrc",
     "lint-to-file": "eslint ./ -c .eslintrc -f checkstyle ./ > eslint.xml",
     "report": "nyc report --reporter=lcov",
     "test": "nyc --require babel-core/register mocha ./tests/*.test.js"
