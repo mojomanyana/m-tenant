@@ -31,19 +31,27 @@
     "nyc": "^11.7.1"
   },
   "babel": {
-    "presets": ["node8"],
+    "presets": [
+      "node8"
+    ],
     "plugins": [
-      ["babel-plugin-inline-import", {
-        "extensions": [
-          ".json",
-          ".js"
-        ]
-      }]
+      [
+        "babel-plugin-inline-import",
+        {
+          "extensions": [
+            ".json",
+            ".js"
+          ]
+        }
+      ]
     ]
   },
   "eslintIgnore": [
     "/dist",
     "/.nyc_output",
     "/node_modules"
-  ]
+  ],
+  "dependencies": {
+    "dotenv": "^5.0.1"
+  }
 }
