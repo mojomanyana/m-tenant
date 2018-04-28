@@ -15,7 +15,7 @@ chmod +x ./cc-test-reporter;\
 for d in */ ; do
     if [ "$d" != "_bin/" ] && [ "$d" != "node_modules/" ] && [ "$d" != "_shared/" ] && [ "$d" != "tmp/" ]; then
         echo -e "\x1b[32m*** $d lcov coverage report ***\x1b[39m";
-        coverage $d;
+        coverage "$d";
     fi
 done
 ./cc-test-reporter sum-coverage tmp/*/api.codeclimate.json -o tmp/codeclimate.total.json
