@@ -2,3 +2,7 @@ plugins:
   eslint:
     enabled: true
     channel: "eslint-4"
+  nodesecurity:
+    enabled: true
+  shellcheck:
+    enabled: true
