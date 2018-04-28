@@ -2,7 +2,7 @@
 
 function clearing {
   (
-    cd $1 || return;\
+    cd "$1" || return;\
     rm -r .nyc_output/;\
     rm -r dist/;\
     rm -r coverage/;\

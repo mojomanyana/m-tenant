@@ -2,7 +2,7 @@
 
 function linting {
   (
-    cd $1 || return;\
+    cd "$1" || return;\
     npm run lint;\
     cd ..;\
   )
