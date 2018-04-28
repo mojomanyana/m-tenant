@@ -5,7 +5,7 @@ function coverage {
     cd "$1" || return;\
     npm run report;\
     cd ..;\
-    ./cc-test-reporter format-coverage -t lcov -o tmp/$1api.codeclimate.json ./$1coverage/lcov.info;\
+    ./cc-test-reporter format-coverage -t lcov -o tmp/"$1"api.codeclimate.json ./"$1"coverage/lcov.info;\
   )
 }
 mkdir -p tmp/;\
