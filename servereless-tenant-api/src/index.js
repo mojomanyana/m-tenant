@@ -1,6 +1,10 @@
 import dotEnv from 'dotenv';
 import AWS from 'aws-sdk';
-import { success, failure } from '../../_shared/labda/responses';
+import {
+  success,
+  failure,
+} from '../../_shared/labda/responses';
+import { getTenantsListQueryParams } from '../../_shared/labda/dynamo-helper';
 
 dotEnv.config();
 const dynamoDb = new AWS.DynamoDB.DocumentClient();
@@ -9,19 +13,9 @@ exports.get = (event, context, callback) => {
   try {
     const { size } = event.queryStringParameters || { size: 100 };
     const paramsBody = JSON.parse(event.body);
-    const getTenantsListParams = {
-      TableName: process.env.DYNAMODB_TENANT_TABLE,
-      IndexName: 'createdAt-index',
-      KeyConditionExpression: 'createdAt > :crtAt',
-      ExpressionAttributeValues: {
-        ':crtAt': 0,
-      },
-      Limit: size,
-      ScanIndexForward: false,
-      ExclusiveStartKey: paramsBody.lastEvaluatedKey,
-    };
+    const params = getTenantsListQueryParams(size, paramsBody.lastEvaluatedKey);
     // Query data and handle promise response
-    dynamoDb.query(getTenantsListParams).promise()
+    dynamoDb.query(params).promise()
       .then(data =>
         callback(
           null,
