@@ -8,6 +8,7 @@ function install {
   )
 }
 
+npm install -g aws-sam-local;
 npm install;
 
 for d in */ ; do
