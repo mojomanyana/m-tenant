@@ -44,6 +44,9 @@
   },
   "homepage": "https://github.com/mojomanyana/m-tenant#readme",
   "devDependencies": {
-    "pre-commit": "^1.2.2"
+    "pre-commit": "^1.2.2",
+    "webpack": "^4.6.0",
+    "webpack-cli": "^2.1.2",
+    "webpack-node-externals": "^1.7.2"
   }
 }
