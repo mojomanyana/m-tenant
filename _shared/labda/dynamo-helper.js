@@ -12,6 +12,17 @@ const getTenantsListQueryParams = (size, lastEvaluatedKey) => (
   }
 );
 
+const getTenantByIdGetParams = (tenantId, userId) => (
+  {
+    TableName: process.env.DYNAMODB_TENANT_TABLE,
+    Key: {
+      tenantId,
+      userId,
+    },
+  }
+);
+
 module.exports = {
   getTenantsListQueryParams,
+  getTenantByIdGetParams,
 };

@@ -1,6 +1,9 @@
 import AWS from 'aws-sdk';
 import { success, failure } from '../../../_shared/labda/responses';
-import { getTenantsListQueryParams } from '../../../_shared/labda/dynamo-helper';
+import {
+  getTenantsListQueryParams,
+  getTenantByIdGetParams,
+} from '../../../_shared/labda/dynamo-helper';
 
 const getTenantsList = (event, context, callback) => {
   try {
@@ -25,6 +28,28 @@ const getTenantsList = (event, context, callback) => {
   }
 };
 
+const getTenantById = (event, context, callback) => {
+  try {
+    const dynamoDb = new AWS.DynamoDB.DocumentClient();
+    const { tenantId, userId } = event.pathParameters;
+    const params = getTenantByIdGetParams(tenantId, userId);
+
+    // Get single tenant data and handle promise response
+    dynamoDb.get(params).promise()
+      .then(data =>
+        callback(
+          null,
+          success({
+            status: true,
+            tenant: data.Item,
+          }),
+        ));
+  } catch (err) {
+    callback(null, failure({ status: false, error: err }));
+  }
+};
+
 module.exports = {
   getTenantsList,
+  getTenantById,
 };
