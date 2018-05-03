@@ -1,3 +1,8 @@
-import { getTenantsList } from './functions/get-tenants';
+import {
+  getTenantsList,
+  getTenantById,
+} from './functions/get-tenants';
 
-exports.get = (event, context, callback) => getTenantsList(event, context, callback);
+exports.getAll = (event, context, callback) => getTenantsList(event, context, callback);
+
+exports.getSingle = (event, context, callback) => getTenantById(event, context, callback);
