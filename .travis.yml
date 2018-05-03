@@ -1,0 +1,8 @@
+language: node_js
+install: 
+# Install the code requirements
+- ./_bin/make_install.sh
+
+script:
+# Runs unit tests
+- ./_bin/make_test.sh
