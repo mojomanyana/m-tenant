@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - "8"
+  - "8.10.0"
 
 install: 
   # Install the code requirements
@@ -9,3 +9,5 @@ install:
 script:
 # Runs unit tests
 - bash ./_bin/make_test.sh
+# Push cover to codeclimate
+- bash ./_bin/make_coverage.sh
