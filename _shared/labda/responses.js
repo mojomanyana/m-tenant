@@ -8,13 +8,13 @@ const buildResponse = (statusCode, body) => ({
 });
 
 module.exports = {
-  success: function success(body) {
+  success: (body) => {
     return buildResponse(200, body);
   },
-  created: function success(body) {
+  created: (body) => {
     return buildResponse(201, body);
   },
-  failure: function success(body) {
+  failure: (body) => {
     return buildResponse(500, body);
   },
 };

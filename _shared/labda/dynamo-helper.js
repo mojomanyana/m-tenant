@@ -14,4 +14,4 @@ const getTenantsListQueryParams = (size, lastEvaluatedKey) => (
 
 module.exports = {
   getTenantsListQueryParams,
-}
+};
