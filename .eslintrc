@@ -9,7 +9,8 @@
   "globals": {
     "it": true,
     "describe": true,
-    "before": true
+    "before": true,
+    "after": true
   },
   "plugins": [
     "security"

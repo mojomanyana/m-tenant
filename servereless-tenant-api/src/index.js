@@ -2,10 +2,9 @@ import AWS from 'aws-sdk';
 import { success, failure } from '../../_shared/labda/responses';
 import { getTenantsListQueryParams } from '../../_shared/labda/dynamo-helper';
 
-const dynamoDb = new AWS.DynamoDB.DocumentClient();
-
 exports.get = (event, context, callback) => {
   try {
+    const dynamoDb = new AWS.DynamoDB.DocumentClient();
     const { size } = event.queryStringParameters || { size: 100 };
     const paramsBody = JSON.parse(event.body);
     const params = getTenantsListQueryParams(size, paramsBody.lastEvaluatedKey);
@@ -20,8 +19,7 @@ exports.get = (event, context, callback) => {
             tenants: data.Items,
             lastEvaluatedKey: data.LastEvaluatedKey,
           }),
-        ))
-      .catch(err => callback(null, failure({ status: false, error: err })));
+        ));
   } catch (err) {
     callback(null, failure({ status: false, error: err }));
   }

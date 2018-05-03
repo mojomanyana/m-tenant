@@ -20,6 +20,7 @@
     "aws-sdk": "^2.227.1"
   },
   "devDependencies": {
+    "aws-sdk-mock": "^2.0.0",
     "babel-cli": "^6.26.0",
     "babel-loader": "^7.1.4",
     "babel-preset-node8": "^1.2.0",
