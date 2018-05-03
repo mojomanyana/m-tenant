@@ -8,13 +8,7 @@ const buildResponse = (statusCode, body) => ({
 });
 
 module.exports = {
-  success: (body) => {
-    return buildResponse(200, body);
-  },
-  created: (body) => {
-    return buildResponse(201, body);
-  },
-  failure: (body) => {
-    return buildResponse(500, body);
-  },
+  success: (body) => buildResponse(200, body),
+  created: (body) => buildResponse(201, body),
+  failure: (body) => buildResponse(500, body),
 };
