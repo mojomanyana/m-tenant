@@ -12,7 +12,7 @@
     "build": "webpack --config ../webpack.config.js",
     "lint": "eslint ./ -c ../.eslintrc",
     "lint-to-file": "eslint ./ -c ../.eslintrc -f checkstyle ./ > eslint.xml",
-    "report": "nyc report --reporter=lcov",
+    "report": "nyc report --reporter=lcov  && cat ./coverage/lcov.info | codacy-coverage",
     "test": "nyc --require babel-core/register mocha ./tests/*.test.js"
   },
   "license": "MIT",
@@ -25,6 +25,7 @@
     "babel-loader": "^7.1.4",
     "babel-preset-node8": "^1.2.0",
     "chai": "^4.1.2",
+    "codacy-coverage": "^3.0.0",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.11.0",

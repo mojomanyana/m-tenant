@@ -11,6 +11,9 @@ function coverage {
 mkdir -p tmp/;\
 curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-darwin-amd64 > ./cc-test-reporter;\
 chmod +x ./cc-test-reporter;\
+set -o allexport;\
+source ./.env;\
+set +o allexport;\
 
 for d in */ ; do
     if [ "$d" != "_bin/" ] && [ "$d" != "node_modules/" ] && [ "$d" != "_shared/" ] && [ "$d" != "tmp/" ]; then
