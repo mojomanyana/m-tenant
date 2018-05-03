@@ -16,8 +16,10 @@
     "test": "nyc --require babel-core/register mocha ./tests/*.test.js"
   },
   "license": "MIT",
+  "dependencies": {
+    "aws-sdk": "^2.227.1"
+  },
   "devDependencies": {
-    "aws-sdk": "^2.227.1",
     "babel-cli": "^6.26.0",
     "babel-loader": "^7.1.4",
     "babel-preset-node8": "^1.2.0",
