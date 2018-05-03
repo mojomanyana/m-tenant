@@ -1,6 +1,6 @@
 import assert from 'assert';
 import { expect } from 'chai';
-import { get } from '../src/index';
+import { get } from '../dist/index';
 
 describe('Test tenant lambda functions in dist/index.js ', () => {
   it('should print console log', (done) => {

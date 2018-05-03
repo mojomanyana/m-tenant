@@ -9,7 +9,7 @@
   "main": "dist/index.js",
   "author": "mojomanyana ",
   "scripts": {
-    "build": "babel ./src -d ./dist --presets node8",
+    "build": "webpack --config ../webpack.config.js",
     "lint": "eslint ./ -c .eslintrc",
     "lint-to-file": "eslint ./ -c .eslintrc -f checkstyle ./ > eslint.xml",
     "report": "nyc report --reporter=lcov",
@@ -17,42 +17,29 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "aws-sdk": "^2.227.1",
     "babel-cli": "^6.26.0",
-    "babel-plugin-inline-import": "^2.0.6",
+    "babel-loader": "^7.1.4",
     "babel-preset-node8": "^1.2.0",
-    "babel-register": "^6.26.0",
     "chai": "^4.1.2",
-    "dynalite": "^1.2.0",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.11.0",
     "eslint-plugin-security": "^1.4.0",
     "mocha": "^5.1.1",
-    "nyc": "^11.7.1"
+    "nyc": "^11.7.1",
+    "webpack": "^4.6.0",
+    "webpack-cli": "^2.1.2",
+    "webpack-node-externals": "^1.7.2"
   },
   "babel": {
     "presets": [
       "node8"
-    ],
-    "plugins": [
-      [
-        "babel-plugin-inline-import",
-        {
-          "extensions": [
-            ".json",
-            ".js"
-          ]
-        }
-      ]
     ]
   },
   "eslintIgnore": [
     "/dist",
     "/.nyc_output",
     "/node_modules"
-  ],
-  "dependencies": {
-    "aws-sdk": "^2.227.1",
-    "dotenv": "^5.0.1"
-  }
+  ]
 }
