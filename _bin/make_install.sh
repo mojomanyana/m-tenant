@@ -3,12 +3,11 @@
 function install {
   (
     cd "$1" || return;\
-    npm install --silent;\
+    npm install;\
     cd ..;\
   )
 }
 
-npm install -g aws-sam-local;
 npm install;
 
 for d in */ ; do
