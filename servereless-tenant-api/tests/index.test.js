@@ -8,7 +8,7 @@ describe('Test tenant lambda functions in dist/index.js ', () => {
       const data = JSON.parse(response.body);
       expect(response.statusCode).to.be.a('number');
       expect(response.statusCode).to.equal(200);
-      assert.equal(data.data, 'Success');
+      assert.equal(data.data,'Success');
       done();
     });
   });
