@@ -1,4 +1,7 @@
 language: node_js
+node_js:
+  - "8"
+
 install: 
 # Install the code requirements
 - ./_bin/make_install.sh
