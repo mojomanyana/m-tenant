@@ -30,7 +30,7 @@ const newTenantPutParams = (tenantId, userId, tenantProperties) => (
       userId,
       name: tenantProperties.name,
       createdAt: new Date().getTime(),
-    }
+    },
   }
 );
 
