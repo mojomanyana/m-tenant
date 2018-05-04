@@ -9,12 +9,10 @@ const newTenant = (event, context, callback) => {
     const dynamoDb = new AWS.DynamoDB.DocumentClient();
     const paramsBody = JSON.parse(event.body);
 
-    assert(event.requestContext.authorizer.principalId);
     assert(paramsBody.name);
 
     const params = newTenantPutParams(
       uuid.v1(), // New tenant ID
-      event.requestContext.authorizer.principalId, // ID of the creator user
       paramsBody,
     );
 

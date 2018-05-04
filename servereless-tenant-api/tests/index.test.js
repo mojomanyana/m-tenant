@@ -18,7 +18,7 @@ const context = {};
 
 describe('Test tenant lambda functions', () => {
   before(() => {
-    AWS_MOCK.mock('DynamoDB.DocumentClient', 'query', (params, callback) => {
+    AWS_MOCK.mock('DynamoDB.DocumentClient', 'scan', (params, callback) => {
       callback(null, { Items: [{ name: 'Test 1', tenantId: 'tenantId1' }, { name: 'Test 2', tenantId: 'tenantId2' }] });
     });
 
@@ -83,8 +83,7 @@ describe('Test tenant lambda functions', () => {
       const data = JSON.parse(responseCreate.body);
       createdResponseCheck(responseCreate, expect);
       assert(data.tenant.tenantId);
-      assert.equal(data.tenant.name, 'test name');
-      assert.equal(data.tenant.userId, 'userId1');
+      assert.equal(data.tenant.tenantName, 'test name');
       done();
     });
   });
