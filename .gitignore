@@ -61,3 +61,5 @@ typings/
 .env
 
 cc-test-reporter
+
+packaged-template.yaml
