@@ -28,6 +28,7 @@ const newTenantPutParams = (tenantId, userId, tenantProperties) => (
     Item: {
       tenantId,
       userId,
+      name: tenantProperties.name,
       createdAt: new Date().getTime(),
     }
   }
