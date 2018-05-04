@@ -6,7 +6,7 @@ const getTenantsListScanParams = (size, lastEvaluatedKey) => (
   }
 );
 
-const getTenantByNameGetParams = (tenantName) => (
+const getTenantByNameGetParams = tenantName => (
   {
     TableName: process.env.DYNAMODB_TENANT_TABLE,
     Key: {
