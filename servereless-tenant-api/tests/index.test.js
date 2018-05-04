@@ -4,10 +4,16 @@ import { expect } from 'chai';
 import {
   getAll,
   getSingle,
+  create,
 } from '../src/index';
+import {
+  successResponseCheck,
+  createdResponseCheck,
+  errorResponseCheck,
+} from '../../_shared/labda/responses-test-helper';
 
 const eventEmpty = { body: '{}' };
-const eventInvalid = { body: {} };
+const eventInvalid = { body: undefined };
 const context = {};
 
 describe('Test tenant lambda functions', () => {
@@ -19,13 +25,16 @@ describe('Test tenant lambda functions', () => {
     AWS_MOCK.mock('DynamoDB.DocumentClient', 'get', (params, callback) => {
       callback(null, { Item: { name: 'Test 1', tenantId: 'tenantId1', userId: 'userId1' } });
     });
+
+    AWS_MOCK.mock('DynamoDB.DocumentClient', 'put', (params, callback) => {
+      callback(null, 'Success');
+    });
   });
 
   it('getAll() => should return 2 tenants and undefined lastEvaluatedKey', (done) => {
-    getAll(eventEmpty, context, (err, response) => {
-      const data = JSON.parse(response.body);
-      expect(response.statusCode).to.be.a('number');
-      expect(response.statusCode).to.equal(200);
+    getAll(eventEmpty, context, (errAll, responseAll) => {
+      const data = JSON.parse(responseAll.body);
+      successResponseCheck(responseAll, expect);
       expect(data.lastEvaluatedKey).to.equal(undefined);
       assert.equal(data.tenants.length, 2);
       assert.equal(data.tenants[0].name, 'Test 1');
@@ -35,9 +44,8 @@ describe('Test tenant lambda functions', () => {
   });
 
   it('getAll() => should return error for invalid body', (done) => {
-    getAll(eventInvalid, context, (err, response) => {
-      expect(response.statusCode).to.be.a('number');
-      expect(response.statusCode).to.equal(500);
+    getAll(eventInvalid, context, (errForAll, responseForAll) => {
+      errorResponseCheck(responseForAll, expect);
       done();
     });
   });
@@ -47,10 +55,9 @@ describe('Test tenant lambda functions', () => {
       tenantId: 'tenantId1',
       userId: 'userId1',
     };
-    getSingle(eventEmpty, context, (err, response) => {
-      const data = JSON.parse(response.body);
-      expect(response.statusCode).to.be.a('number');
-      expect(response.statusCode).to.equal(200);
+    getSingle(eventEmpty, context, (errSingle, responseSingle) => {
+      const data = JSON.parse(responseSingle.body);
+      successResponseCheck(responseSingle, expect);
       assert.equal(data.tenant.name, 'Test 1');
       assert.equal(data.tenant.tenantId, 'tenantId1');
       assert.equal(data.tenant.userId, 'userId1');
@@ -58,10 +65,38 @@ describe('Test tenant lambda functions', () => {
     });
   });
 
-  it('should return error for invalid body', (done) => {
-    getSingle(eventInvalid, context, (err, response) => {
-      expect(response.statusCode).to.be.a('number');
-      expect(response.statusCode).to.equal(500);
+  it('getSingle() => should return error for invalid body', (done) => {
+    getSingle(eventInvalid, context, (errForSingle, responseForSingle) => {
+      errorResponseCheck(responseForSingle, expect);
+      done();
+    });
+  });
+
+  it('create() => should save new tenant details', (done) => {
+    const eventNewTenant = { body: '{ "name": "test name" }' };
+    eventNewTenant.requestContext = {
+      authorizer: {
+        principalId: 'userId1',
+      },
+    };
+    create(eventNewTenant, context, (errCreate, responseCreate) => {
+      const data = JSON.parse(responseCreate.body);
+      createdResponseCheck(responseCreate, expect);
+      assert(data.tenant.tenantId);
+      assert.equal(data.tenant.name, 'test name');
+      assert.equal(data.tenant.userId, 'userId1');
+      done();
+    });
+  });
+
+  it('create() => should return error for missing name', (done) => {
+    eventEmpty.requestContext = {
+      authorizer: {
+        principalId: 'userId1',
+      },
+    };
+    create(eventEmpty, context, (errCreateMissing, responseCreateMissing) => {
+      errorResponseCheck(responseCreateMissing, expect);
       done();
     });
   });
