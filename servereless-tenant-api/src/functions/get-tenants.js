@@ -32,7 +32,7 @@ const getTenantById = (event, context, callback) => {
   try {
     const dynamoDb = new AWS.DynamoDB.DocumentClient();
     const { tenantName } = event.pathParameters;
-    const params = getTenantByNameGetParams(tenantName);
+    const params = getTenantByNameGetParams(decodeURIComponent(tenantName));
 
     // Get single tenant data and handle promise response
     dynamoDb.get(params).promise()
