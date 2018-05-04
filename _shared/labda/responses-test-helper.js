@@ -1,14 +1,10 @@
+const check = (response, expect, code) => {
+  expect(response.statusCode).to.be.a('number');
+  expect(response.statusCode).to.equal(code);
+}
+
 module.exports = {
-  errorResponseCheck: (response, expect) => {
-    expect(response.statusCode).to.be.a('number');
-    expect(response.statusCode).to.equal(500);
-  },
-  successResponseCheck: (response, expect) => {
-    expect(response.statusCode).to.be.a('number');
-    expect(response.statusCode).to.equal(200);
-  },
-  createdResponseCheck: (response, expect) => {
-    expect(response.statusCode).to.be.a('number');
-    expect(response.statusCode).to.equal(201);
-  },
+  errorResponseCheck: (response, expect) => check(response, expect, 500),
+  successResponseCheck: (response, expect) => check(response, expect, 200),
+  createdResponseCheck: (response, expect) => check(response, expect, 201),
 };
