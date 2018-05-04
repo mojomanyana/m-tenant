@@ -22,7 +22,19 @@ const getTenantByIdGetParams = (tenantId, userId) => (
   }
 );
 
+const newTenantPutParams = (tenantId, userId, tenantProperties) => (
+  {
+    TableName: process.env.DYNAMODB_TENANT_TABLE,
+    Item: {
+      tenantId,
+      userId,
+      createdAt: new Date().getTime(),
+    }
+  }
+);
+
 module.exports = {
   getTenantsListQueryParams,
   getTenantByIdGetParams,
+  newTenantPutParams,
 };
