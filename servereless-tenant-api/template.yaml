@@ -84,15 +84,11 @@ Resources:
           - - !Ref Stage 
             - "_m_tenant"
       AttributeDefinitions:
-        - AttributeName: tenantId
-          AttributeType: S
-        - AttributeName: userId
+        - AttributeName: tenantName
           AttributeType: S
       KeySchema:
-        - AttributeName: tenantId
+        - AttributeName: tenantName
           KeyType: HASH
-        - AttributeName: userId
-          KeyType: RANGE
       ProvisionedThroughput:
         ReadCapacityUnits: 2
         WriteCapacityUnits: 2

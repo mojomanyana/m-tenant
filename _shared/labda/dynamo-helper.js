@@ -1,41 +1,33 @@
-const getTenantsListQueryParams = (size, lastEvaluatedKey) => (
+const getTenantsListScanParams = (size, lastEvaluatedKey) => (
   {
     TableName: process.env.DYNAMODB_TENANT_TABLE,
-    IndexName: 'createdAt-index',
-    KeyConditionExpression: 'createdAt > :crtAt',
-    ExpressionAttributeValues: {
-      ':crtAt': 0,
-    },
     Limit: size,
-    ScanIndexForward: false,
     ExclusiveStartKey: lastEvaluatedKey,
   }
 );
 
-const getTenantByIdGetParams = (tenantId, userId) => (
+const getTenantByNameGetParams = (tenantName) => (
   {
     TableName: process.env.DYNAMODB_TENANT_TABLE,
     Key: {
-      tenantId,
-      userId,
+      tenantName,
     },
   }
 );
 
-const newTenantPutParams = (tenantId, userId, tenantProperties) => (
+const newTenantPutParams = (tenantId, tenantProperties) => (
   {
     TableName: process.env.DYNAMODB_TENANT_TABLE,
     Item: {
       tenantId,
-      userId,
-      name: tenantProperties.name,
+      tenantName: tenantProperties.name,
       createdAt: new Date().getTime(),
     },
   }
 );
 
 module.exports = {
-  getTenantsListQueryParams,
-  getTenantByIdGetParams,
+  getTenantsListScanParams,
+  getTenantByNameGetParams,
   newTenantPutParams,
 };

@@ -1,8 +1,8 @@
 import AWS from 'aws-sdk';
 import { success, failure } from '../../../_shared/labda/responses';
 import {
-  getTenantsListQueryParams,
-  getTenantByIdGetParams,
+  getTenantsListScanParams,
+  getTenantByNameGetParams,
 } from '../../../_shared/labda/dynamo-helper';
 
 const getTenantsList = (event, context, callback) => {
@@ -10,10 +10,10 @@ const getTenantsList = (event, context, callback) => {
     const dynamoDb = new AWS.DynamoDB.DocumentClient();
     const { size } = event.queryStringParameters || { size: 100 };
     const paramsBody = JSON.parse(event.body);
-    const params = getTenantsListQueryParams(size, paramsBody.lastEvaluatedKey);
+    const params = getTenantsListScanParams(size, paramsBody.lastEvaluatedKey);
 
     // Query data and handle promise response
-    dynamoDb.query(params).promise()
+    dynamoDb.scan(params).promise()
       .then(data =>
         callback(
           null,
@@ -31,8 +31,8 @@ const getTenantsList = (event, context, callback) => {
 const getTenantById = (event, context, callback) => {
   try {
     const dynamoDb = new AWS.DynamoDB.DocumentClient();
-    const { tenantId, userId } = event.pathParameters;
-    const params = getTenantByIdGetParams(tenantId, userId);
+    const { tenantName } = event.pathParameters;
+    const params = getTenantByNameGetParams(tenantName);
 
     // Get single tenant data and handle promise response
     dynamoDb.get(params).promise()
