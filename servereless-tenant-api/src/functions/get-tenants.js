@@ -28,7 +28,7 @@ const getTenantsList = (event, context, callback) => {
   }
 };
 
-const getTenantById = (event, context, callback) => {
+const getTenantByName = (event, context, callback) => {
   try {
     const dynamoDb = new AWS.DynamoDB.DocumentClient();
     const { tenantName } = event.pathParameters;
@@ -51,5 +51,5 @@ const getTenantById = (event, context, callback) => {
 
 module.exports = {
   getTenantsList,
-  getTenantById,
+  getTenantByName,
 };

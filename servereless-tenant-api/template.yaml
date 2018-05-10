@@ -50,7 +50,7 @@ Resources:
         ListTenants:
           Type: Api
           Properties:
-            Path: /tenants/list
+            Path: /tenants
             Method: POST
   NewTenantFunction:
     Type: AWS::Serverless::Function
@@ -73,7 +73,30 @@ Resources:
         AddTenant:
           Type: Api
           Properties:
-            Path: /tenants/create
+            Path: /tenant
+            Method: POST
+  AddTaskToTenantFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Runtime: nodejs8.10
+      Handler: index.addTask
+      CodeUri: ./dist
+      Policies:
+        - AWSLambdaExecute # Managed Policy
+        - Version: '2012-10-17' # Policy Document
+          Statement:
+            - Effect: Allow
+              Action:
+                - dynamodb:*
+              Resource:
+                'Fn::GetAtt':
+                  - TenantsTable
+                  - Arn
+      Events:
+        AddTenant:
+          Type: Api
+          Properties:
+            Path: /tenant/{tenantName}/task
             Method: POST
   GetSingleTenantFunction:
     Type: AWS::Serverless::Function
@@ -96,7 +119,7 @@ Resources:
         AddTenant:
           Type: Api
           Properties:
-            Path: /tenants/{tenantName}
+            Path: /tenant/{tenantName}
             Method: GET
   TenantsTable:
     Type: 'AWS::DynamoDB::Table'
