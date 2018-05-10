@@ -109,9 +109,10 @@ describe('Test tenant lambda functions', () => {
     eventEmpty.pathParameters = {
       tenantName: 'tenantId1',
     };
-    addTask(eventEmpty, context, (errSingle, responseSingle) => {
-      const data = JSON.parse(responseSingle.body);
-      successResponseCheck(responseSingle, expect);
+    const eventNewTask = { body: '{ "description": "task name", "operations": ["cache"] }' };
+    addTask(eventNewTask, context, (errAddTask, responseAddTask) => {
+      const data = JSON.parse(responseAddTask.body);
+      successResponseCheck(responseAddTask, expect);
       assert.equal(data, 'Success');
       done();
     });
