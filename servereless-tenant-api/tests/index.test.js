@@ -106,10 +106,10 @@ describe('Test tenant lambda functions', () => {
   });
 
   it('addTask() => should return solo tenant details with task added', (done) => {
-    eventEmpty.pathParameters = {
+    const eventNewTask = { body: '{ "description": "task name", "operations": ["cache"] }' };
+    eventNewTask.pathParameters = {
       tenantName: 'tenantId1',
     };
-    const eventNewTask = { body: '{ "description": "task name", "operations": ["cache"] }' };
     addTask(eventNewTask, context, (errAddTask, responseAddTask) => {
       const data = JSON.parse(responseAddTask.body);
       successResponseCheck(responseAddTask, expect);
