@@ -27,22 +27,22 @@ const newTenantPutParams = (tenantId, tenantName) => (
 );
 
 const existingTenantAddTaskUpdateParams = (
-    tenantName,
-    description, 
-    operations,
-    notifyAfterTS,
-  ) => (
+  tenantName,
+  description,
+  operations,
+  notifyAfterTS,
+) => (
   {
     TableName: process.env.DYNAMODB_TENANT_TABLE,
     Key: {
       tenantName,
     },
-    UpdateExpression : 'SET #attrName = list_append(if_not_exists(#attrName, :empty_list), :attrValue)',
-    ExpressionAttributeNames : {
-      '#attrName' : 'tasks'
+    UpdateExpression: 'SET #attrName = list_append(if_not_exists(#attrName, :empty_list), :attrValue)',
+    ExpressionAttributeNames: {
+      '#attrName': 'tasks',
     },
-    ExpressionAttributeValues : {
-      ':attrValue' : [
+    ExpressionAttributeValues: {
+      ':attrValue': [
         {
           notifyAfterTS,
           description,
@@ -50,9 +50,9 @@ const existingTenantAddTaskUpdateParams = (
           'createdAt': Date.now(),
         }
       ],
-      ':empty_list': []
+      ':empty_list': [],
     },
-    ReturnValues: 'UPDATED_NEW'
+    ReturnValues: 'UPDATED_NEW',
   }
 );
 

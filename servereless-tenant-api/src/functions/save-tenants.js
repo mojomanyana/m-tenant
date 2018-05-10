@@ -41,8 +41,7 @@ const newTaskForTenant = (event, context, callback) => {
     const { tenantName } = event.pathParameters;
     assert(tenantName);
     assert(paramsBody.description);
-    assert(paramsBody.operations);
-    assert(paramsBody.operations[0]);
+    assert(paramsBody.operations && paramsBody.operations[0]);
 
     const paramsAddTask = existingTenantAddTaskUpdateParams(
       tenantName,
@@ -50,7 +49,6 @@ const newTaskForTenant = (event, context, callback) => {
       paramsBody.operations,
       paramsBody.notifyAfterTS || Date.now(),
     );
-
     // Update data and handle promise response
     dynamoDb.update(paramsAddTask).promise()
       .then(data =>
