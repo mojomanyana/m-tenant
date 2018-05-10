@@ -38,6 +38,7 @@ const newTaskForTenant = (event, context, callback) => {
   try {
     const dynamoDb = new AWS.DynamoDB.DocumentClient();
     const paramsBody = JSON.parse(event.body);
+    console.log('paramsBody', paramsBody);
     const { tenantName } = event.pathParameters;
     assert(tenantName);
     assert(paramsBody.description);
