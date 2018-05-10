@@ -47,8 +47,8 @@ const existingTenantAddTaskUpdateParams = (
           notifyAfterTS,
           description,
           operations,
-          'createdAt': Date.now(),
-        }
+          createdAt: Date.now(),
+        },
       ],
       ':empty_list': [],
     },
