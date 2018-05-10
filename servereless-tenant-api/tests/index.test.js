@@ -5,6 +5,7 @@ import {
   getAll,
   getSingle,
   create,
+  addTask,
 } from '../src/index';
 import {
   successResponseCheck,
@@ -27,6 +28,10 @@ describe('Test tenant lambda functions', () => {
     });
 
     AWS_MOCK.mock('DynamoDB.DocumentClient', 'put', (params, callback) => {
+      callback(null, 'Success');
+    });
+
+    AWS_MOCK.mock('DynamoDB.DocumentClient', 'update', (params, callback) => {
       callback(null, 'Success');
     });
   });
@@ -96,6 +101,25 @@ describe('Test tenant lambda functions', () => {
     };
     create(eventEmpty, context, (errCreateMissing, responseCreateMissing) => {
       errorResponseCheck(responseCreateMissing, expect);
+      done();
+    });
+  });
+
+  it('addTask() => should return solo tenant details with task added', (done) => {
+    eventEmpty.pathParameters = {
+      tenantName: 'tenantId1',
+    };
+    addTask(eventEmpty, context, (errSingle, responseSingle) => {
+      const data = JSON.parse(responseSingle.body);
+      successResponseCheck(responseSingle, expect);
+      assert.equal(data, 'Success');
+      done();
+    });
+  });
+
+  it('addTask() => should return error for invalid body', (done) => {
+    addTask(eventInvalid, context, (errForTask, responseForTask) => {
+      errorResponseCheck(responseForTask, expect);
       done();
     });
   });
