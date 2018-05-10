@@ -113,7 +113,7 @@ describe('Test tenant lambda functions', () => {
     addTask(eventNewTask, context, (errAddTask, responseAddTask) => {
       const data = JSON.parse(responseAddTask.body);
       successResponseCheck(responseAddTask, expect);
-      assert.equal(data, 'Success');
+      assert.equal(data.data, 'Success');
       done();
     });
   });
