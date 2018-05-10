@@ -6,6 +6,7 @@ function clearing {
     rm -r .nyc_output/;\
     rm -r dist/;\
     rm -r coverage/;\
+    rm packaged-template.yaml;\
     cd ..;\
   )
 }

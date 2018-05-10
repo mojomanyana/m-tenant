@@ -1,4 +1,5 @@
 import AWS from 'aws-sdk';
+import assert from 'assert';
 import { success, failure } from '../../../_shared/labda/responses';
 import {
   getTenantsListScanParams,
@@ -28,12 +29,12 @@ const getTenantsList = (event, context, callback) => {
   }
 };
 
-const getTenantById = (event, context, callback) => {
+const getTenantByName = (event, context, callback) => {
   try {
     const dynamoDb = new AWS.DynamoDB.DocumentClient();
     const { tenantName } = event.pathParameters;
     const params = getTenantByNameGetParams(decodeURIComponent(tenantName));
-
+    assert(tenantName);
     // Get single tenant data and handle promise response
     dynamoDb.get(params).promise()
       .then(data =>
@@ -51,5 +52,5 @@ const getTenantById = (event, context, callback) => {
 
 module.exports = {
   getTenantsList,
-  getTenantById,
+  getTenantByName,
 };
