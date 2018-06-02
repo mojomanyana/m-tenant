@@ -17,6 +17,7 @@ const newTenant = (event, context, callback) => {
     const params = newTenantPutParams(
       uuid.v1(), // New tenant ID
       paramsBody.name,
+      paramsBody.email,
     );
 
     // Query data and handle promise response
