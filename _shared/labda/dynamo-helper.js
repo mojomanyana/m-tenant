@@ -15,13 +15,18 @@ const getTenantByNameGetParams = tenantName => (
   }
 );
 
-const newTenantPutParams = (tenantId, tenantName) => (
+const newTenantPutParams = (tenantId, tenantName, ownerEmail) => (
   {
     TableName: process.env.DYNAMODB_TENANT_TABLE,
     Item: {
       tenantId,
       tenantName,
+      ownerEmail,
       createdAt: Date.now(),
+    },
+    ConditionExpression = "#tenantName <> :tenantName",
+    ExpressionAttributeValues: {
+      ':empty_list': tenantName,
     },
   }
 );
