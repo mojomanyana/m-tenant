@@ -11,7 +11,6 @@ const newTenant = (event, context, callback) => {
   try {
     const dynamoDb = new AWS.DynamoDB.DocumentClient();
     const paramsBody = JSON.parse(event.body);
-
     assert(paramsBody.name);
 
     const params = newTenantPutParams(
@@ -20,7 +19,7 @@ const newTenant = (event, context, callback) => {
       paramsBody.email,
     );
 
-    // Query data and handle promise response
+    // Put data and handle promise response
     dynamoDb.put(params).promise()
       .then(() =>
         callback(
@@ -29,7 +28,16 @@ const newTenant = (event, context, callback) => {
             status: true,
             tenant: params.Item,
           }),
-        ));
+        ))
+      .catch(() => {
+        callback(
+          null,
+          success({
+            status: true,
+            tenant: params.Item,
+          }),
+        );
+      });
   } catch (err) {
     callback(null, failure({ status: false, error: err }));
   }

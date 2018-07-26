@@ -24,13 +24,7 @@ const newTenantPutParams = (tenantId, tenantName, ownerEmail) => (
       ownerEmail,
       createdAt: Date.now(),
     },
-    ConditionExpression: '#tenantName <> :tenantName',
-    ExpressionAttributeNames: {
-      '#tenantName': 'tenantName',
-    },
-    ExpressionAttributeValues: {
-      ':tenantName': tenantName,
-    },
+    ConditionExpression: 'attribute_not_exists(tenantName)',
   }
 );
 
