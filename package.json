@@ -45,6 +45,7 @@
   "homepage": "https://github.com/mojomanyana/m-tenant#readme",
   "devDependencies": {
     "babel-preset-node8": "^1.2.0",
+    "nsp": "^3.2.1",
     "pre-commit": "^1.2.2",
     "webpack": "^4.6.0",
     "webpack-node-externals": "^1.7.2"
